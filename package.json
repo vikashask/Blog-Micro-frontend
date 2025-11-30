@@ -1,0 +1,26 @@
+{
+  "name": "blog-micro-fe",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm:dev:*\" --names \"shell,posts,post-detail,comments,shared-ui\" --prefix-colors \"cyan,magenta,yellow,green,blue\"",
+    "dev:shell": "cd packages/shell && npm start",
+    "dev:posts": "cd packages/posts && npm start",
+    "dev:post-detail": "cd packages/post-detail && npm start",
+    "dev:comments": "cd packages/comments && npm start",
+    "dev:shared-ui": "cd packages/shared-ui && npm start",
+    "build": "npm run build:shared-ui && npm run build:posts && npm run build:post-detail && npm run build:comments && npm run build:shell",
+    "build:shell": "cd packages/shell && npm run build",
+    "build:posts": "cd packages/posts && npm run build",
+    "build:post-detail": "cd packages/post-detail && npm run build",
+    "build:comments": "cd packages/comments && npm run build",
+    "build:shared-ui": "cd packages/shared-ui && npm run build",
+    "clean": "rm -rf packages/*/dist packages/*/node_modules node_modules"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
